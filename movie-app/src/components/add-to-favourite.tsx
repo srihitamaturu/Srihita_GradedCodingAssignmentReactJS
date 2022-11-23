@@ -1,7 +1,7 @@
 import React from "react";
 import { Button} from "react-bootstrap";
 import IMovie from "../model/IMovie";
-import { FAVOURITE_MOVIES} from "../constants/constants"
+import { FAVORITE_MOVIES} from "../constants/constants"
 import { getIdOfLastMovie, getMovieByCategoryAndID, getMovieByTitleAndYear, addMovieByCategory } from "../services/movies";
 import { toast } from "react-toastify";
 
@@ -26,18 +26,18 @@ function AddToFavourite ( {movie, movieCategory} : MovieModel) {
 async function addFavouriteMovie  (id : number, movieCategory : string) {
     try {
 
-        const favouriteMovie : IMovie = await getMovieByCategoryAndID(movieCategory, id);
-        const movieByTitleAndYear = await getMovieByTitleAndYear(favouriteMovie.title, favouriteMovie.year);
+        const favoriteMovie : IMovie = await getMovieByCategoryAndID(movieCategory, id);
+        const movieByTitleAndYear = await getMovieByTitleAndYear(favoriteMovie.title, favoriteMovie.year);
 
         if(movieByTitleAndYear !== null){
-            toast.error(`"${favouriteMovie.title}" movie already added to favourites !!!`);
+            toast.error(`"${favoriteMovie.title}" movie already added to favorites !!!`);
             return;
         }
 
-        const lastMovieID : number = await getIdOfLastMovie(FAVOURITE_MOVIES);
-        favouriteMovie.id = lastMovieID + 1;
-        await addMovieByCategory(favouriteMovie, FAVOURITE_MOVIES );
-        toast.success(`${favouriteMovie.title}" movie successfully added to favourites !!!`);
+        const lastMovieID : number = await getIdOfLastMovie(FAVORITE_MOVIES);
+        favoriteMovie.id = lastMovieID + 1;
+        await addMovieByCategory(favoriteMovie, FAVORITE_MOVIES );
+        toast.success(`${favoriteMovie.title}" movie successfully added to favorites !!!`);
     }
     catch (error : any) {
         toast.error(`Error while adding movie to favourites !!!`);

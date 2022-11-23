@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Alert, Row, Col, Spinner } from 'react-bootstrap';
 import { RouteComponentProps } from "react-router-dom";
-import { FAVOURITE_MOVIES, MOVIES_COMING, MOVIES_IN_THEATERS, TOP_RATED_MOVIES, TOP_RATED_MOVIES_INDIA } from "../constants/constants";
+import { FAVORITE_MOVIES, MOVIES_COMING, MOVIES_IN_THEATERS, TOP_RATED_MOVIES, TOP_RATED_MOVIES_INDIA } from "../constants/constants";
 import IMovie from "../model/IMovie";
 import { getMoviesByCategory } from "../services/movies";
 import { LoadingStatus } from "../utils/types";
@@ -89,19 +89,19 @@ class MoviesByCategory extends Component<RouteComponentProps<Props>, State> {
     moviePageTitleByCategory = (url: string) => {
         switch (url) {
             case MOVIES_IN_THEATERS:
-                return "Movies in thaters";
+                return "Movies in Theaters";
 
             case MOVIES_COMING:
-                return "Coming soon movies";
+                return "Coming soon Movies";
 
             case TOP_RATED_MOVIES_INDIA:
-                return "Top rated Indian movies";
+                return "Top rated Indian Movies";
 
             case TOP_RATED_MOVIES:
-                return "Top reated movies";
+                return "Top rated Movies";
 
-            case FAVOURITE_MOVIES:
-                return "Favourite movies";
+            case FAVORITE_MOVIES:
+                return "Favorite Movies";
         }
     }
 

@@ -1,5 +1,5 @@
 import { Card } from 'react-bootstrap';
-import { FAVOURITE_MOVIES } from '../constants/constants';
+import { FAVORITE_MOVIES } from '../constants/constants';
 import IMovie from '../model/IMovie';
 import AddToFavourite from './add-to-favourite';
 import RemoveFavourite from './remove-favourite';
@@ -12,7 +12,7 @@ type MovieModel = {
 
 function MovieCard({ movie, url }: MovieModel) {
   let isFavourite: Boolean = false;
-  if ((url) === FAVOURITE_MOVIES) {
+  if ((url) === FAVORITE_MOVIES) {
     isFavourite = true;
   }
 

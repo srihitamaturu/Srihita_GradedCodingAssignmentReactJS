@@ -1,6 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
-import { BASE_API_URL, FAVOURITE_MOVIES } from "../constants/constants";
+import { BASE_API_URL, FAVORITE_MOVIES } from "../constants/constants";
 import IMovie from "../model/IMovie";
 
 const getMoviesByCategory = async (movieCategory : string) => {
@@ -23,7 +23,7 @@ const getMoviesByCategoryAndID = async (movieCategory : string, id: number) => {
 
 const getMovieByTitleAndYear = async (title: string, year : number) => {
     const response = await axios.get<IMovie[]>(
-      `${BASE_API_URL}/${FAVOURITE_MOVIES}?title=${title}&year=${year}`
+      `${BASE_API_URL}/${FAVORITE_MOVIES}?title=${title}&year=${year}`
     );
     if (response.data === null || response.data.length === 0) {
       return null;

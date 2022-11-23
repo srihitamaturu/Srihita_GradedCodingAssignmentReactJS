@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import IMovie from "../model/IMovie";
-import { FAVOURITE_MOVIES } from "../constants/constants"
+import { FAVORITE_MOVIES } from "../constants/constants"
 import { getMoviesByCategory, removeMovieById } from "../services/movies";
 import MovieCard from "./movie-card";
 
@@ -16,7 +16,7 @@ function RemoveFavourite({ movie, url }: MovieModel) {
     return (
         <React.Fragment>
             <div style={({ marginBottom: '0.8rem', fontSize: '1em' })}>
-                <Button onClick={() => { removeFavMovieAndUpdate(movie.id, FAVOURITE_MOVIES, msg) }} key={movie.title} style={{ width: '13em', backgroundColor: 'red', borderColor: 'red' }}>Remove Favourite
+                <Button onClick={() => { removeFavMovieAndUpdate(movie.id, FAVORITE_MOVIES, msg) }} key={movie.title} style={{ width: '13em', backgroundColor: 'red', borderColor: 'red' }}>Remove Favourite
                 </Button>
             </div>
         </React.Fragment>
@@ -28,9 +28,9 @@ function RemoveFavourite({ movie, url }: MovieModel) {
 
 
 const removeFavMovieAndUpdate = (movieID : number, movieCat: string, msg: string) => {
-    removeMovieById(movieID, FAVOURITE_MOVIES, msg);
+    removeMovieById(movieID, FAVORITE_MOVIES, msg);
     console.log();
-    //UpdateMovie();
+    UpdateMovie();
 
 }
 
@@ -39,7 +39,7 @@ function UpdateMovie () {
     let favMovies : IMovie[];
     useEffect(() => {
         const getAllFavouriteMovies = async () => {
-            favMovies = await getMoviesByCategory(FAVOURITE_MOVIES);
+            favMovies = await getMoviesByCategory(FAVORITE_MOVIES);
             setMovies(favMovies);
         }
 
@@ -49,14 +49,14 @@ function UpdateMovie () {
     
     return (
         <>
-            <h1>Favourit movies</h1>
+            <h1>Favourite movies</h1>
             <hr />
             <Row xs={1} md={3} lg={5}>
                 {
                     movies?.map(
                         (movie) => (
                             <Col key={movie.id} className="d-flex my-2">
-                                <MovieCard movie={movie} url={FAVOURITE_MOVIES} />
+                                <MovieCard movie={movie} url={FAVORITE_MOVIES} />
                             </Col>
                         )
                     )
