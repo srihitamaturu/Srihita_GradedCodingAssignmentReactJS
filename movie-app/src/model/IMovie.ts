@@ -15,3 +15,5 @@ interface IMovie {
     imdbRating: number,
     posterurl: string
 };
+
+export default IMovie;
